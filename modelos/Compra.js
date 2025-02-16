@@ -8,10 +8,10 @@ const Compra = sequelize.define('Compra', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  // Outros campos, como data da compra, podem ser adicionados aqui
+  
 });
 
-// Associações
+
 Usuario.hasMany(Compra);
 Compra.belongsTo(Usuario);
 
