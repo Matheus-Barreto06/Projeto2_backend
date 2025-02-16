@@ -4,7 +4,7 @@ const Usuario = require('../modelos/Usuario');
 const jwt = require('jsonwebtoken');
 const segredo = 'seu_seguro_jwt'; 
 
-// Cadastro de usuário
+
 router.post('/cadastrar', async (req, res) => {
   try {
     const { nomeUsuario, senha, papel } = req.body;
