@@ -9,7 +9,7 @@ const Usuario = sequelize.define('Usuario', {
   },
   senha: {
     type: DataTypes.STRING,
-    allowNull: false // Em produção, armazene a senha de forma hash
+    allowNull: false 
   },
   papel: {
     type: DataTypes.ENUM('usuario', 'admin'),
