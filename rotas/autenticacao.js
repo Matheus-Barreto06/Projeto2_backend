@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Usuario = require('../modelos/Usuario');
 const jwt = require('jsonwebtoken');
-const segredo = 'seu_seguro_jwt'; // Use variável de ambiente em produção
+const segredo = 'seu_seguro_jwt'; 
 
 // Cadastro de usuário
 router.post('/cadastrar', async (req, res) => {
@@ -15,7 +15,7 @@ router.post('/cadastrar', async (req, res) => {
   }
 });
 
-// Login
+
 router.post('/login', async (req, res) => {
   try {
     const { nomeUsuario, senha } = req.body;
