@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const segredo = 'seu_seguro_jwt'; // Em produção, use variável de ambiente
+const segredo = 'seu_seguro_jwt'; 
 
 function verificarToken(req, res, next) {
   const cabecalhoAutenticacao = req.headers['authorization'];
