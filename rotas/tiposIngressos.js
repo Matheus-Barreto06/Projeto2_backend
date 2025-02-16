@@ -4,7 +4,7 @@ const TipoIngresso = require('../modelos/TipoIngresso');
 const { verificarToken } = require('../middlewares/autenticacao');
 const { ehAdmin } = require('../middlewares/administrador');
 
-// Criar tipo de ingresso (apenas admin)
+
 router.post('/', verificarToken, ehAdmin, async (req, res) => {
   try {
     const { nome, preco, quantidadeDisponivel } = req.body;
@@ -15,7 +15,7 @@ router.post('/', verificarToken, ehAdmin, async (req, res) => {
   }
 });
 
-// Listar todos os tipos de ingresso
+
 router.get('/', async (req, res) => {
   try {
     const tiposIngressos = await TipoIngresso.findAll();
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obter detalhes de um tipo de ingresso
+
 router.get('/:id', async (req, res) => {
   try {
     const tipoIngresso = await TipoIngresso.findByPk(req.params.id);
@@ -36,7 +36,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Atualizar tipo de ingresso (apenas admin)
+
 router.put('/:id', verificarToken, ehAdmin, async (req, res) => {
   try {
     const { nome, preco, quantidadeDisponivel } = req.body;
@@ -49,7 +49,7 @@ router.put('/:id', verificarToken, ehAdmin, async (req, res) => {
   }
 });
 
-// Excluir tipo de ingresso (apenas admin)
+
 router.delete('/:id', verificarToken, ehAdmin, async (req, res) => {
   try {
     const tipoIngresso = await TipoIngresso.findByPk(req.params.id);
