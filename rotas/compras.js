@@ -4,12 +4,12 @@ const Compra = require('../modelos/Compra');
 const TipoIngresso = require('../modelos/TipoIngresso');
 const { verificarToken } = require('../middlewares/autenticacao');
 
-// Realizar compra de ingresso (usuário autenticado)
+
 router.post('/', verificarToken, async (req, res) => {
   try {
     const { idTipoIngresso, quantidade } = req.body;
     
-    // Verifica se o tipo de ingresso existe
+
     const tipoIngresso = await TipoIngresso.findByPk(idTipoIngresso);
     if (!tipoIngresso) {
       return res.status(404).json({ erro: 'Tipo de ingresso não encontrado' });
@@ -20,11 +20,11 @@ router.post('/', verificarToken, async (req, res) => {
       return res.status(400).json({ erro: 'Quantidade solicitada excede o estoque disponível' });
     }
     
-    // Atualiza o estoque
+
     tipoIngresso.quantidadeDisponivel -= quantidade;
     await tipoIngresso.save();
     
-    // Registra a compra
+
     const compra = await Compra.create({
       quantidade,
       TipoIngressoId: tipoIngresso.id,
@@ -37,7 +37,7 @@ router.post('/', verificarToken, async (req, res) => {
   }
 });
 
-// Histórico de compras do usuário autenticado
+
 router.get('/meus', verificarToken, async (req, res) => {
   try {
     const compras = await Compra.findAll({
@@ -50,7 +50,6 @@ router.get('/meus', verificarToken, async (req, res) => {
   }
 });
 
-// Visualização detalhada de uma compra específica
 router.get('/:id', verificarToken, async (req, res) => {
   try {
     const compra = await Compra.findByPk(req.params.id, { include: TipoIngresso });
